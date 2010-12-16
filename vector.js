@@ -57,7 +57,16 @@ Vector.prototype = {
 		return (inDegrees) ? 
 			Math.atan2(this.y,this.x) * TO_DEGREES :
 			Math.atan2(this.y,this.x);
-	},	
+	},
+	angleTo: function(vect, inDegrees) {
+		var a = Math.atan2(vect.y - this.y, vect.x - this.x);
+		if(inDegrees) {
+			if(a < 0)
+				a = (a + Math.PI) + Math.PI;
+				return a * TO_DEGREES;
+		}
+		return a;
+	},
   rotate: function (angle) {
     var cosRY = Math.cos(angle * TO_RADIANS);
 		var sinRY = Math.sin(angle * TO_RADIANS);
@@ -86,6 +95,10 @@ Vector.prototype = {
   limit: function () {},
   angleBetween: function () {}
 };
+
+try {
+	exports.Vector = Vector;
+} catch(e) {};
 
 return Vector;
 
