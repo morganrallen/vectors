@@ -67,6 +67,9 @@ Vector.prototype = {
 		}
 		return a;
 	},
+	distanceTo: function(vect) {
+		return Math.sqrt(Math.pow(vect.x - this.x, 2) + Math.pow(vect.y - this.y, 2));
+	},
   rotate: function (angle) {
     var cosRY = Math.cos(angle * TO_RADIANS);
 		var sinRY = Math.sin(angle * TO_RADIANS);
